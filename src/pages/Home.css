@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column
+}
+
+.como-usar {
+  display: block;
+  background-color: #00000000;
+  color: aliceblue;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.introducao {
+  position: absolute;
+  z-index: 100;
+  font-size: 1.2em;
+  margin-top: 14rem;
+  background-color: #171736;
+  padding: 3rem;
+  border-radius: 5px;
+  width: 80%;
+  right: 8rem;
+}
+
+.sistema-solar {
+  overflow: hidden;
+  background: #000;
+  margin: auto;
+}
+
+.sol {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #ffdd00, #ff9900);
+  border-radius: 50%;
+  box-shadow: 0 0 50px #ff9900;
+  z-index: 10;
+}
+
+.orbita {
+  animation-play-state: running;
+}
+
+.orbita.pausado {
+  animation-play-state: paused !important;
+}
+
+/* A órbita gira */
+.orbita {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.753);
+  border-radius: 50%;
+  transform-origin: center center;
+  animation: orbit linear infinite;
+  animation-play-state: running; /* Garantido aqui */
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.orbita.pausado {
+  animation-play-state: paused !important;
+}
+
+/* Tamanhos das órbitas e duração da animação */
+.orbita-mercurio {
+  width: 200px;
+  height: 200px;
+  margin-left: -98px;
+  margin-top: -98px;
+  animation-duration: 4s;
+}
+
+.orbita-venus {
+  width: 250px;
+  height: 250px;
+  margin-left: -123px;
+  margin-top: -123px;
+  animation-duration: 6s;
+}
+
+.orbita-terra {
+  width: 300px;
+  height: 300px;
+  margin-left: -146px;
+  margin-top: -146px;
+  animation-duration: 8s;
+}
+
+.orbita-marte {
+  width: 350px;
+  height: 350px;
+  margin-left: -169px;
+  margin-top: -169px;
+  animation-duration: 10s;
+}
+
+.orbita-jupiter {
+  width: 400px;
+  height: 400px;
+  margin-left: -192px;
+  margin-top: -192px;
+  animation-duration: 12s;
+}
+
+.orbita-saturno {
+  width: 450px;
+  height: 450px;
+  margin-left: -215px;
+  margin-top: -215px;
+  animation-duration: 14s;
+}
+
+.orbita-urano {
+  width: 500px;
+  height: 500px;
+  margin-left: -238px;
+  margin-top: -238px;
+  animation-duration: 16s;
+}
+
+.orbita-netuno {
+  width: 550px;
+  height: 550px;
+  margin-left: -261px;
+  margin-top: -261px;
+  animation-duration: 18s;
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Planeta posicionado na borda direita da órbita */
+.planeta {
+  scale: 1;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.planeta img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 20;
+}
+
+.planeta:hover img {
+  transform: scale(1.5);
+}
+
+/* Tamanho dos planetas */
+.mercurio {
+  width: 25px;
+  height: 25px;
+}
+
+.venus {
+  width: 30px;
+  height: 30px;
+}
+
+.terra {
+  width: 35px;
+  height: 35px;
+}
+
+.marte {
+  width: 40px;
+  height: 40px;
+}
+
+.jupiter {
+  width: 45px;
+  height: 45px;
+}
+
+.saturno {
+  width: 40px;
+  height: 40px;
+}
+
+.urano {
+  width: 35px;
+  height: 35px;
+}
+
+.netuno {
+  width: 36px;
+  height: 36px;
+}
+
+.container-sistema-solar {
+  overflow: hidden;
+}
+
+/* Informações do planeta */
+.info-planeta {
+  position: absolute;
+  top: -80px;
+  left: -50px;
+  width: 200px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  padding: 5px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  z-index: 30;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 8px 0;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.9) transparent transparent;
+  }
+}
+
+@media (max-width: 700px) {
+  .main-content {
+    margin-top: 15rem;
+    padding-bottom: 100px;
+    scale: 0.6;
+  }
+
+  .como-usar {
+  }
+
+  .introducao {
+    position: absolute;
+    z-index: 100;
+    font-size: 1.5em;
+    margin-top: -8rem;
+    padding: 3rem;
+    border-radius: 5px;
+  }
+}
